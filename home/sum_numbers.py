@@ -14,14 +14,26 @@ def sum_numbers(text):
     Sums all separated digits in given string.
     Numbers that are part of the word are not counted.
     """
-    pass
+    split_text = text.split(" ")
+    numbers_list = []
+    for i in split_text:
+        try:
+            numbers_list.append(int(i))
+        except ValueError:
+            pass
+    if len(numbers_list) == 0:
+        return 0
+    return sum(numbers_list)
 
 
 def sum_numbers_regex(text):
     """
     Does the same as 'sum_numbers()' funcs but using regex
     """
-    pass
+    numbers_list = re.findall(r"\b(\d+)\b", text)
+    if len(numbers_list) == 0:
+        return 0
+    return sum(map(int, numbers_list))
 
 
 def unified_sum_func(text):
@@ -29,8 +41,8 @@ def unified_sum_func(text):
     Compares results of 'sum_numbers()' and 'sum_numbers_regex()' funcs
     and returns sum of numbers in text if both results are equal
     """
-
-    pass
+    assert sum_numbers(text) == sum_numbers_regex(text)
+    return sum_numbers(text)
 
 
 if __name__ == "__main__":

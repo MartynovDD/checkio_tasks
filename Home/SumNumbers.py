@@ -6,9 +6,15 @@ The text consists from numbers, spaces and english letters
 https://py.checkio.org/ru/mission/sum-numbers/
 """
 
+import re
+
 
 def sum_numbers(string):
-    pass
+    target = str(string)
+    num_list = re.findall(r"-?\d", target)
+    if len(num_list) == 0:
+        return 0
+    return sum(map(int, num_list))
 
 
 assert sum_numbers("test") == 0  # Case 1
@@ -20,6 +26,7 @@ assert sum_numbers("William Ford Gibson (born March 17, 1948) is an American-Can
                    "Beginning his writing career in the late 1970s, his early works were noir, near-future stories "
                    "that explored the effects of technology, cybernetics, and computer networks") == 47  # Case 5
 assert sum_numbers("") == 0  # Case 6
+assert sum_numbers("2, -1") == 1  # Case 7
 
-assert sum_numbers(1) == "error"  # Case 7
-assert sum_numbers(1.4) == "error"  # Case 8
+assert sum_numbers(1) == 1  # Case 8
+assert sum_numbers(1.4) == 5  # Case 9

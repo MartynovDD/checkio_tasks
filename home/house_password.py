@@ -5,6 +5,7 @@ symbols, it has at least one digit, as well as containing one uppercase letter a
 password contains only ASCII latin letters or digits.
 https://py.checkio.org/mission/house-password/
 """
+import string
 
 
 def check_password(password):
@@ -13,22 +14,10 @@ def check_password(password):
     If conditions are met function returns True
     Otherwise function returns False
     """
-    if len(password) < 10:
-        return False
-
-    u_flag = False
-    l_flag = False
-    d_flag = False
-
-    for i in password:
-        if i.isupper():
-            u_flag = True
-        if i.islower():
-            l_flag = True
-        if i.isdigit():
-            d_flag = True
-
-    return u_flag and l_flag and d_flag
+    password_set = set(password)
+    return bool(len(password_set) <= 10 and password_set & set(string.digits) \
+           and password_set & set(string.ascii_uppercase) \
+           and password_set & set(string.ascii_lowercase))
 
 
 if __name__ == "__main__":

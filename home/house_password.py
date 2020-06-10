@@ -7,20 +7,20 @@ https://py.checkio.org/mission/house-password/
 """
 
 
-def check_password(pwd):
+def check_password(password):
     """
     Checks given password to meet required conditions (at least one digit, one uppercase letter and one lowercase letter
     If conditions are met function returns True
     Otherwise function returns False
     """
-    if len(pwd) < 10:
+    if len(password) < 10:
         return False
 
     u_flag = False
     l_flag = False
     d_flag = False
 
-    for i in pwd:
+    for i in password:
         if i.isupper():
             u_flag = True
         if i.islower():

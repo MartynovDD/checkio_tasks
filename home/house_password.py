@@ -15,9 +15,9 @@ def check_password(password):
     Otherwise function returns False
     """
     password_set = set(password)
-    return bool(len(password_set) <= 10 and password_set & set(string.digits) \
-           and password_set & set(string.ascii_uppercase) \
-           and password_set & set(string.ascii_lowercase))
+    return bool(len(password_set) <= 10 and password_set.intersection(set(string.digits)) \
+           and password_set.intersection(set(string.ascii_uppercase)) \
+           and password_set.intersection(set(string.ascii_lowercase)))
 
 
 if __name__ == "__main__":

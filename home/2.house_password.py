@@ -15,9 +15,13 @@ def check_password(password):
     Otherwise function returns False
     """
     password_set = set(password)
-    return bool(len(password_set) <= 10 and password_set.intersection(set(string.digits)) \
-           and password_set.intersection(set(string.ascii_uppercase)) \
-           and password_set.intersection(set(string.ascii_lowercase)))
+    # The password will be considered strong enough if its length is greater than or equal to 10
+    # symbols
+    length_flag = len(password) >= 10
+    digits_flag = bool(password_set.intersection(set(string.digits)))
+    uppercase_flag = bool(password_set.intersection(set(string.ascii_uppercase)))
+    lowercase_flag = bool(password_set.intersection(set(string.ascii_lowercase)))
+    return length_flag and digits_flag and uppercase_flag and lowercase_flag
 
 
 if __name__ == "__main__":
@@ -27,3 +31,5 @@ if __name__ == "__main__":
     assert check_password("ASDAFAFDS") == False  # Case 4
     assert check_password("AS214S34") == False  # Case 5
     assert check_password("a3fSgf4Df5") == True  # Case 6
+    assert check_password("Aa1111111111")
+    assert check_password("Aa1234567890")

@@ -8,18 +8,16 @@
  As a joke on the right handed robots, you should replace all cases of the words "right" with the word "left",
  even if it's a part of another word.
  All strings are given in lowercase.
+ https://py.checkio.org/ru/mission/right-to-left/
 """
-
-import re
 
 
 def left_join(phrases):
     """
         Join strings and replace "right" to "left"
     """
-    converted = ','.join(phrases)
-    result = re.sub('right*', 'left', converted)
-    return result
+    joined_phrases = ','.join(phrases)
+    return joined_phrases.replace("right", "left")
 
 
 if __name__ == '__main__':

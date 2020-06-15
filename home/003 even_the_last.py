@@ -13,13 +13,9 @@ def even_the_last(array):
     Calculates the sum of integers on even positions in array
     then multiplies them by integer on last position in array
     """
-    result = 0
-    for i in range(0, len(array), 2):
-        result = result + array[i]
 
     if array:
-        result *= array[-1]
-        return result
+        return sum(array[::2]) * array[-1]
     else:
         return 0
 

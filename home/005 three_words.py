@@ -5,6 +5,7 @@
  The words contains only letters.
  You should check if the string contains three words in succession.
  For example, the string "start 5 one two three 7 end" contains three words in succession.
+ https://py.checkio.org/ru/mission/even-last/
 """
 
 

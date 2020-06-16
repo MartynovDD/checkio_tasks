@@ -19,6 +19,9 @@ class TestDaysBetween(unittest.TestCase):
     def test_insuf_args(self):
         self.assertEqual(days_between((2001,), (2000,)), "insufficient arguments", "Case 5")
 
+    def test_incorrect_argument(self):
+        self.assertEqual(days_between("", ""), "incorrect value", "Case 6")
+
 
 if __name__ == "__main__":
     unittest.main()

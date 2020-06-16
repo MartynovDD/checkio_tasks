@@ -27,6 +27,7 @@ if __name__ == "__main__":
     assert days_between((2014, 8, 27), (2014, 1, 1)) == 238, "Case 3"
     assert days_between([1982, 4, 19], [1982, 4, 22]) == 3, "Case 4"
     assert days_between((2001,), (2000,)) == "insufficient arguments", "Case 5"
+    assert days_between("", "") == "incorrect value", "Case 6"
 
 # TODO : implement border case and incorrect case
 # TODO : use unittest

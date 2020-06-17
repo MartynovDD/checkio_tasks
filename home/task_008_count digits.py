@@ -4,15 +4,15 @@ https://py.checkio.org/en/mission/count-digits/
 """
 
 
-def count_digits(text):
+def count_digits(text: str) -> int:
     """
     Counts digits in the given string
     """
-    counter = 0
-    for letter in text:
-        if letter.isdigit():
-            counter += 1
-    return counter
+    # for letter in text:
+    #     if letter.isdigit():
+    #         counter += 1
+    digits = [letter.isdigit() for letter in text]
+    return sum(digits)
 
 
 if __name__ == "__main__":

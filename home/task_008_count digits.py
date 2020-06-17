@@ -8,9 +8,7 @@ def count_digits(text: str) -> int:
     """
     Counts digits in the given string
     """
-    # for letter in text:
-    #     if letter.isdigit():
-    #         counter += 1
+    text = str(text)
     digits = [letter.isdigit() for letter in text]
     return sum(digits)
 
@@ -22,6 +20,7 @@ if __name__ == "__main__":
     assert count_digits("As of March 2018, SpaceX had over 100 launches on its manifest"
                         " representing about $12 billion in contract revenue") == 9, "Case 4"
     assert count_digits('') == 0, "Case 5"
+    assert count_digits(42) == 2, "Case 6"
 
 # TODO : implement border case and incorrect case
 # TODO : use unittest

@@ -12,14 +12,20 @@ import datetime
 import typing
 
 
-def days_between(first_date: typing.Iterable, second_date: typing.Iterable) -> typing.Union[int, str]:
+def fill_date(date: typing.Iterable) -> tuple:
+    date = list(date) + list((1 for _ in range(3 - len(date)))) + list((0 for _ in range(2)))
+    return tuple(date)
+
+
+def days_between(first_date: typing.Iterable, second_date: typing.Iterable) -> int:
     """
     Returns difference between date a and date b
     """
-    if len(first_date) < 3 or len(second_date) < 3:
-        return "incorrect value"
-    difference = datetime.date(*first_date) - datetime.date(*second_date)
-    return abs(difference.days)
+    try:
+        difference = datetime.datetime(*fill_date(first_date)) - datetime.datetime(*fill_date(second_date))
+        return abs(difference.days)
+    except Exception as e:
+        raise e
 
 
 if __name__ == "__main__":
@@ -27,8 +33,10 @@ if __name__ == "__main__":
     assert days_between((2014, 1, 1), (2014, 8, 27)) == 238, "Case 2"
     assert days_between((2014, 8, 27), (2014, 1, 1)) == 238, "Case 3"
     assert days_between([1982, 4, 19], [1982, 4, 22]) == 3, "Case 4"
-    assert days_between((2001,), (2000,)) == "incorrect value", "Case 5"
-    assert days_between("", "") == "incorrect value", "Case 6"
+    assert days_between((2001,), (2000,)) == 366, "Case 5"
+    assert days_between("", "") == 0, "Case 6"
+    assert days_between((2020, 5), (2020, 6)) == 31, "Case 7"
+    assert days_between((1991, 1, 1, 0, 0), (1992, 1, 1, 0, 0)) == 365, "Case 8"
 
 # TODO : implement border case and incorrect case
 # TODO : use unittest

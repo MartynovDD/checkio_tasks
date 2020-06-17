@@ -2,10 +2,9 @@
 You need to count the number of digits in a given string.
 https://py.checkio.org/en/mission/count-digits/
 """
-import typing
 
 
-def count_digits(text: typing.Any) -> int:
+def count_digits(text: str) -> int:
     """
     Counts digits in the given string
     """

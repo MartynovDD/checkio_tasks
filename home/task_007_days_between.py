@@ -9,9 +9,10 @@ The difference will always be either a positive number or zero, so don't forget 
 https://py.checkio.org/ru/mission/days-diff/
 """
 import datetime
+import typing
 
 
-def days_between(first_date: tuple, second_date: tuple) -> int:
+def days_between(first_date: typing.Iterable, second_date: typing.Iterable) -> typing.Union[int, str]:
     """
     Returns difference between date a and date b
     """

@@ -8,9 +8,10 @@ A word can contain an apostrophe and it's a part of a word.
 The whole text can be represented with one word and that's it.
 https://py.checkio.org/ru/mission/three-words/
 """
+import typing
 
 
-def first_word(text: str) -> str:
+def first_word(text: typing.Any) -> str:
     """
         Returns the first word in a given text.
     """

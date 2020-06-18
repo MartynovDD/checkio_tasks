@@ -13,25 +13,30 @@ You have to find a substring enclosed between these two markers. But there are a
 
 def between_markers(text: str, begin: str, end: str) -> str:
     """
-        returns substring between two given markers
+        Returns substring between two given markers
     """
-    if begin in text:
-        start = text.find(begin) + len(begin)
-    else:
-        start = 0
-    if end in text:
-        finish = text.find(end)
-    else:
-        finish = len(text)
-
-    return text[start:finish]
+    try:
+        if begin in text:
+            start = text.find(begin) + len(begin)
+        else:
+            start = 0
+        if end in text:
+            finish = text.find(end)
+        else:
+            finish = len(text)
+        return text[start:finish]
+    except TypeError:
+        return "error"
 
 
 if __name__ == "__main__":
-    assert between_markers('What is >apple<', '>', '<') == "apple", "One sym"
-    assert between_markers("<head><title>My new site</title></head>",
-                           "<title>", "</title>") == "My new site", "HTML"
-    assert between_markers('No[/b] hi', '[b]', '[/b]') == 'No', 'No opened'
-    assert between_markers('No [b]hi', '[b]', '[/b]') == 'hi', 'No close'
-    assert between_markers('No hi', '[b]', '[/b]') == 'No hi', 'No markers at all'
-    assert between_markers('No <hi>', '>', '<') == '', 'Wrong direction'
+    assert between_markers("What is >apple<", ">", "<") == "apple", "One word"
+    assert between_markers("<body<h1>Foo bar</h1></body>",
+                           "<h1>", "</h1>") == "Foo bar", "HTML tags"
+    assert between_markers("Spam> hi", "<", ">") == "Spam", "Only ending marker"
+    assert between_markers("Hello [b]world", "[b]", "[/b]") == "world", "Only opening marker"
+    assert between_markers("print me", "[b]", "[/b]") == "print me", "No markers at all"
+    assert between_markers("No <hi>", ">", "<") == "", "Wrong direction"
+    assert between_markers("(123)", "(", ")") == "123", "Numbers in bracers"
+    assert between_markers("", "{", "}") == "", "Empty string"
+    assert between_markers(123, 1, 3) == "error", "Incorrect arguments"

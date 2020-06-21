@@ -48,6 +48,29 @@ class TestBiggerPrice(unittest.TestCase):
             {"name": "spam"}
         ]), [{"name": "spam"}], "No price")
 
+    def test_equal_prices(self):
+        self.assertEqual(bigger_price(2, [
+            {"name": "a", "price": 100},
+            {"name": "c", "price": 100},
+            {"name": "b", "price": 100}
+        ]), [{"name": "a", "price": 100}, {"name": "c", "price": 100}], "Equal price")
+
+    def test_equal_float_prices(self):
+        self.assertEqual(bigger_price(2, [
+            {"name": "a", "price": 1.1 + 2.2},
+            {"name": "c", "price": 1.1 + 2.2},
+            {"name": "b", "price": 1.1 + 2.2}
+        ]), [{"name": "a", "price": 3.3}, {"name": "c", "price": 3.3}], "Equal float prices")
+
+    def test_no_arguments(self):
+        self.assertRaises(TypeError, bigger_price(), msg="No arguments")
+
+    def test_missing_arguments(self):
+        self.assertRaises(TypeError, bigger_price(4), msg="Missing one argument")
+
+    def test_incorrect_arguments(self):
+        self.assertRaises(TypeError, bigger_price(4, 5), msg="Incorrect arguments")
+
 
 if __name__ == "__main__":
     unittest.main()

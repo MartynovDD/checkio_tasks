@@ -1,12 +1,8 @@
-def exception_catcher(func):
+def exception_catcher(func, *args):
     try:
-        func()
-    except TypeError:
-        return True
-    except ValueError:
-        return True
-    except ZeroDivisionError:
-        return True
+        func(*args)
+    except Exception as e:
+        return type(e)
     else:
         return False
 

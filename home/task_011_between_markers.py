@@ -11,6 +11,10 @@ You have to find a substring enclosed between these two markers. But there are a
 """
 
 
+class PreConditionException(Exception):
+    pass
+
+
 def between_markers(text: str, begin: str, end: str) -> str:
     """
         Returns substring between two given markers
@@ -37,6 +41,10 @@ if __name__ == "__main__":
     assert between_markers("Hello [b]world", "[b]", "[/b]") == "world", "Only opening marker"
     assert between_markers("print me", "[b]", "[/b]") == "print me", "No markers at all"
     assert between_markers("No <hi>", ">", "<") == "", "Wrong direction"
+    # assert between_markers("No <hi>", "", "") == "No <hi>", "Wrong direction"
     assert between_markers("(123)", "(", ")") == "123", "Numbers in bracers"
     assert between_markers("", "{", "}") == "", "Empty string"
+    assert between_markers("{error}", "{", "}") == "error", "Empty string"
     assert between_markers(123, 1, 3) == "error", "Incorrect arguments"
+    assert between_markers("bla bla bla</b> text<b> qwerty", "<b>", "</b>") == ""
+    # assert between_markers(list(range(10)), 1, 3) == "error"

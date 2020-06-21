@@ -8,8 +8,8 @@ def word_reverse(text: str) -> str:
     try:
         for word in text.split():
             text = text.replace(word, word[::-1]) if word.isalpha() else text
-    except AttributeError:
-        return "error"
+    except AttributeError as e:
+        return type(e)
     return text
 
 
@@ -22,8 +22,8 @@ if __name__ == "__main__":
     assert word_reverse("1337 696") == "1337 696", "Text contains only numbers"
     assert word_reverse("1337  696  ") == "1337  696  ", "Text contains only numbers"
     assert word_reverse("&&*%test") == "&&*%test", "Symbols + word"
-    assert word_reverse(343) == "error", "Only strings are allowed"
+    assert word_reverse(343) == AttributeError, "Only strings are allowed"
     assert word_reverse("error") == "rorre", "Error"
     assert word_reverse("rorre") == "error", "Error backwards"
-    assert word_reverse("rorre error") == "error rorre", "Error backwards"
+    assert word_reverse("rorre error") == "error rorre", "Result = {}".format(word_reverse("rorre error"))
 

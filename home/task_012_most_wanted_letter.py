@@ -15,14 +15,13 @@ def most_wanted_letter(text: str) -> str:
     """
     Find and return letter with maximum occurencies in given text
     """
-    text = str.lower(text)
-    textnospace = text.replace(' ', '')
-    itemcount = []
-    for char in textnospace:
+    joint_text = text.lower().replace(" ", "")
+    item_count = []
+    for char in joint_text:
         if char.isalpha():
-            itemcount.append((char, textnospace.count(char)))
-            itemcount.sort(key=lambda x: (-x[1], x[0]))
-    return itemcount[0][0]
+            item_count.append((char, joint_text.count(char)))
+            item_count.sort(key=lambda x: (-x[1], x[0]))
+    return item_count[0][0]
 
 
 if __name__ == "__main__":

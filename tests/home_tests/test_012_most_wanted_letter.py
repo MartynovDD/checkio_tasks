@@ -40,8 +40,10 @@ def test_letter_with_numbers():
 
 
 def test_empty_string():
-    #TODO Investigate
     assert most_wanted_letter("") == "", "Empty string"
+
+
+def test_one_space():
     assert most_wanted_letter(" ") == "", "One space"
 
 

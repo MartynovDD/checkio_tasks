@@ -6,11 +6,14 @@ When solving this task, do not change the order of the list.
 Example: [1, 2, 3, 1, 3] 1 and 3 non-unique elements and result will be [1, 3, 1, 3].
 https://py.non_unique_elements.org/en/mission/non-unique-elements/
 """
+import typing
 
 
-def non_unique_elements(data: list) -> list:
+def non_unique_elements(data: typing.Union[list, dict]) -> list:
     """
-    Delete all unique elements from list and return list
+
+    :param data:
+    :return:
     """
     if isinstance(data, dict):
         data = list(data.values())

@@ -9,18 +9,13 @@ If you have two or more letters with the same frequency, then return the letter 
 For example -- "one" contains "o", "n", "e" only once for each, thus we choose "e".
 https://py.most_wanted_letter.org/en/mission/most-wanted-letter/
 """
+import collections
 
 
 def most_wanted_letter(text: str) -> str:
     """
     Find and return letter with maximum occurencies in given text
     """
-    joint_text = text.lower().replace(" ", "")
-    item_count = []
-    for char in joint_text:
-        if char.isalpha():
-            item_count.append((char, joint_text.count(char)))
-            item_count.sort(key=lambda x: (-x[1], x[0]))
-    return item_count[0][0]
-
+    letters = sorted([letter for letter in text.lower() if letter.isalpha()])
+    return collections.Counter(letters).most_common()[0][0] if letters else ""
 

@@ -39,6 +39,12 @@ def test_letter_with_numbers():
     assert most_wanted_letter("12345,12345,12345 S 12345,12345") == "s", "Letter with numbers"
 
 
+def test_empty_string():
+    #TODO Investigate
+    assert most_wanted_letter("") == "", "Empty string"
+    assert most_wanted_letter(" ") == "", "One space"
+
+
 def test_zero_arguments():
     assert exception_catcher(most_wanted_letter) == TypeError, "Zero arguments"
 

@@ -24,15 +24,3 @@ def most_wanted_letter(text: str) -> str:
     return item_count[0][0]
 
 
-if __name__ == "__main__":
-    assert most_wanted_letter("Hello World!") == "l", "Hello test"
-    assert most_wanted_letter("How do you do?") == "o", "O is most wanted"
-    assert most_wanted_letter("One") == "e", "All letter only once."
-    assert most_wanted_letter("Oops!") == "o", "Don't forget about lower case."
-    assert most_wanted_letter("AAaooo!!!!") == "a", "Only letters."
-    assert most_wanted_letter("abe") == "a", "The First."
-    assert most_wanted_letter("a" * 9000 + "b" * 1000) == "a", "Long."
-    assert most_wanted_letter("ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba") == "a"
-    assert most_wanted_letter("i-d-d-q-d") == "d"
-    assert most_wanted_letter("      d       ") == "d"
-    assert most_wanted_letter("12345,12345,12345 S 12345,12345") == "s"

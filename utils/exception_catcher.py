@@ -3,8 +3,6 @@ def exception_catcher(func, *args):
         func(*args)
     except Exception as e:
         return type(e)
-    else:
-        return False
 
 
 def test_func():

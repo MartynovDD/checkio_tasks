@@ -63,18 +63,18 @@ class TestBiggerPrice(unittest.TestCase):
         ]), [{"name": "a", "price": 3.3}, {"name": "c", "price": 3.3}], "Equal float prices")
 
     def test_no_arguments(self):
-        # TODO Fix exception catch
-        self.assertRaises(TypeError, bigger_price(), msg="No arguments")
+        with self.assertRaises(TypeError) as e:
+            bigger_price()
 
     @unittest.skip
     def test_missing_arguments(self):
-        # TODO Fix exception catch
-        self.assertRaises(TypeError, bigger_price(4), msg="Missing one argument")
+        with self.assertRaises(TypeError) as e:
+            bigger_price(2)
 
     @unittest.skip
     def test_incorrect_arguments(self):
-        # TODO Fix exception catch
-        self.assertRaises(TypeError, bigger_price(4, 5), msg="Incorrect arguments")
+        with self.assertRaises(TypeError) as e:
+            bigger_price(4, 5)
 
 
 if __name__ == "__main__":

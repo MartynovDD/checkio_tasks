@@ -14,7 +14,9 @@ import collections
 
 def most_wanted_letter(text: str) -> str:
     """
-    Find and return letter with maximum occurencies in given text
+    Finds a letter with maximum occurencies in given text
+    :param text:
+    :return: str
     """
     letters = sorted([letter for letter in text.lower() if letter.isalpha()])
     return collections.Counter(letters).most_common()[0][0] if letters else ""

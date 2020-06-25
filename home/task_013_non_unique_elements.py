@@ -11,9 +11,9 @@ import typing
 
 def non_unique_elements(data: typing.Union[list, dict]) -> list:
     """
-
-    :param data:
-    :return:
+    Delete all unique elements from list and return list
+    :param data: list, dict
+    :return: list
     """
     if isinstance(data, dict):
         data = list(data.values())

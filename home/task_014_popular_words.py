@@ -13,7 +13,10 @@ When solving this task pay attention to the following points:
 
 def popular_words(text: str, words: list) -> dict:
     """
-    Using a list words, finds and returns dict with number of occurencies of each word in given text
+    Finds and returns dict with number of occurencies of each word in given text
+    :param text: str
+    :param words: list
+    :return: dict
     """
     split_data = text.lower().split()
     output = {}

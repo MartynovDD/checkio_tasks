@@ -4,16 +4,18 @@ that is, the number of times they appear in elements.
 If two elements have the same frequency, they should end up in the same order as the first appearance in the iterable.
 """
 import typing
+from collections import Counter
 
 
 def frequency_sort(items: typing.Iterable) -> list:
-    # TODO Fix to pass test 3
-    # TODO Add pytest tests
     """
     Sorts iterable by item frequency
     :param items: Iterable
     :return: list
     """
-    result = sorted(items, key=items.count, reverse=True)
+    counts = Counter(items).most_common()
+    result = []
+    for k, v in counts:
+        for n in range(v):
+            result.append(k)
     return result
-

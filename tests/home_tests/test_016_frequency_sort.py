@@ -7,7 +7,7 @@ def test_words_list():
     assert frequency_sort(['bob', 'bob', 'carl', 'alex', 'bob']) == ['bob', 'bob', 'bob', 'carl', 'alex'], "Words list"
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_numbers_list():
     # TODO Investigate
     assert frequency_sort([4, 6, 2, 2, 6, 4, 4, 4]) == [4, 4, 4, 4, 6, 6, 2, 2], "Numbers list"
@@ -38,4 +38,4 @@ def test_no_arguments():
 
 
 def test_incorrect_argument():
-    assert exception_catcher(frequency_sort, 4.4) == AttributeError, "Incorrect argument"
+    assert exception_catcher(frequency_sort, 4.4) == TypeError, "Incorrect argument"

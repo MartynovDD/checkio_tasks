@@ -11,7 +11,7 @@ https://py.checkio.org/en/mission/second-index/
 
 
 def second_index(text: str, symbol: str) -> [int, None]:
-    # TODO Add pytest tests
+    # TODO Fix docstring and annotations
     """
     returns the second index of a symbol in a given text
     :param text: str
@@ -21,8 +21,8 @@ def second_index(text: str, symbol: str) -> [int, None]:
     if text.count(symbol) < 2:
         return None
     else:
-        first = text.find(symbol)
-        second = text.find(symbol, first + 1)
-        return second
+        first_occurency = text.find(symbol)
+        second_occurency = text.find(symbol, first_occurency + 1)
+        return second_occurency
 
 

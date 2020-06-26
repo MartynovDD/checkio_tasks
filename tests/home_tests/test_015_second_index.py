@@ -28,12 +28,15 @@ def test_empty_symbol():
 
 
 def test_no_arguments():
+    # TODO Use pytest.raises
     assert exception_catcher(second_index) == TypeError, "No arguments"
 
 
 def test_one_argument():
+    # TODO Use pytest.raises
     assert exception_catcher(second_index, "hello") == TypeError, "No arguments"
 
 
 def test_incorrect_arguments():
+    # TODO Use pytest.raises
     assert exception_catcher(second_index, 314159265, 1) == AttributeError, "Incorrect arguments"

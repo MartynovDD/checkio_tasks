@@ -10,8 +10,8 @@ from collections import Counter
 def frequency_sort(items: typing.Iterable) -> list:
     """
     Sorts iterable by item frequency
-    :param items: Iterable
-    :return: list
+    :param items: Iterable to sort
+    :return: list sorted by item frequency in given Iterable
     """
     counts = Counter(items).most_common()
     result = []

@@ -4,24 +4,36 @@ You should count how many pawns are safe.
 """
 
 
+def is_safe(pawn_indexes: set, pawn: tuple) -> bool:
+    """
+    Using coordinates checks whether given pawn is safe
+    :param pawn_indexes: Set of numeric coordinates of all pawns
+    :param pawn: Tuple of coordinates of a pawn to be checked
+    :return: True if pawn is safe, False otherwise
+    """
+    return ((pawn[0] - 1, pawn[1] - 1) in pawn_indexes) or ((pawn[0] - 1, pawn[1] + 1) in pawn_indexes)
+
+
+def pawn_coordinates(pawns: set) -> set:
+    """
+    Converts pawns checkmate coordinates to numeric coordinates
+    :param pawns: Set of pawns' checkmate coordinates
+    :return: Set of pawns' numeric coordinates
+    """
+    return {(int(pawn[1]) - 1, ord(pawn[0]) - 97) for pawn in pawns}
+
+
 def safe_pawns(pawns: set) -> int:
-    # TODO Refactor
     """
     Using set of pawn coordinates counts number of safe pawns
     :param pawns: set of pawn checkmate coordinates (ex: {a4, e1, h3})
     :return: int number of safe pawns
     """
-    pawn_indexes = set()
-    for p in pawns:
-        row = int(p[1]) - 1
-        col = ord(p[0]) - 97
-        pawn_indexes.add((row, col))
-
-    count = 0
+    pawn_indexes = pawn_coordinates(pawns)
+    safe = []
     for row, col in pawn_indexes:
-        is_safe = ((row - 1, col - 1) in pawn_indexes) or ((row - 1, col + 1) in pawn_indexes)
-        if is_safe:
-            count += 1
-    return count
+        if is_safe(pawn_indexes, (row, col)):
+            safe.append((row, col))
+    return len(safe)
 
 

@@ -9,22 +9,15 @@ https://py.checkio.org/ru/mission/split-list/
 def split_list(items: list) -> list:
     """
     Splits list into two lists.
-    If length of the items list is odd, then len(first_list) < len(second_list)
+    If length of the items list is odd, then len(first_list) > len(second_list)
     :param items: a list of items to split
     :return: list of two sublists
     """
-    if len(items) % 2 == 0:
-        first_length = int(len(items) / 2)
-        second_length = first_length
+    split_markers = divmod(len(items), 2)
+    if not split_markers[1]:
+        result = [[item for item in items[:split_markers[0]]],
+                  [item for item in items[split_markers[0]:]]]
     else:
-        first_length = len(items) - int(len(items) / 2)
-        second_length = int(len(items) / 2) + 1
-    result = [[item for item in items[:first_length]], [item for item in items[second_length:]]]
+        result = [[item for item in items[:(len(items) - split_markers[0])]], 
+                  [item for item in items[(split_markers[0] + 1):]]]
     return result
-
-
-if __name__ == "__main__":
-    assert split_list([1, 2, 3, 4]) == [[1, 2], [3, 4]], "Even length"
-
-
-

@@ -5,6 +5,7 @@ You should count how many pawns are safe.
 
 
 def safe_pawns(pawns: set) -> int:
+    # TODO Refactor
     """
     Using set of pawn coordinates counts number of safe pawns
     :param pawns: set of pawn checkmate coordinates (ex: {a4, e1, h3})

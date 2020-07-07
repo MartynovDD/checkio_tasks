@@ -31,9 +31,9 @@ def safe_pawns(pawns: set) -> int:
     """
     pawn_indexes = pawn_coordinates(pawns)
     safe = []
-    for row, col in pawn_indexes:
-        if is_safe(pawn_indexes, (row, col)):
-            safe.append((row, col))
+    for row, column in pawn_indexes:
+        if is_safe(pawn_indexes, (row, column)):
+            safe.append((row, column))
     return len(safe)
 
 

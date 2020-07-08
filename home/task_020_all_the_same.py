@@ -10,5 +10,6 @@ def all_the_same(items: list) -> bool:
     :param items: a list of items to compare
     :return: True if all items are same, False if not
     """
-    pass
+    items_set = set(items)
+    return True if len(items_set) <= 1 else False
 

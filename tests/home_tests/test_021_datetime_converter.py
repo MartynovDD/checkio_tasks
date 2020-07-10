@@ -10,6 +10,11 @@ def test_birthday():
     assert date_time("06.06.1993 02:01") == "6 June 1993 year 2 hours 1 minute", "Birthday"
 
 
+def test_empty_date():
+    with pytest.raises(ValueError):
+        date_time("")
+
+
 def test_no_args():
     with pytest.raises(TypeError):
         date_time()

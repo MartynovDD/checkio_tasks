@@ -35,7 +35,8 @@ def test_floats():
 
 
 def test_string():
-    assert all_the_same("bbbbbbb") is True, "A string"
+    with pytest.raises(TypeError):
+        all_the_same("BBBBBBBB")
 
 
 def test_no_arguments():

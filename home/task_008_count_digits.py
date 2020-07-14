@@ -22,6 +22,4 @@ if __name__ == "__main__":
     assert count_digits('') == 0, "Case 5"
     assert count_digits(42) == 2, "Case 6"
 
-# TODO : implement border case and incorrect case
-# TODO : use unittest
-# TODO: use list comprehension instead of current solution
+

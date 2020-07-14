@@ -12,7 +12,6 @@ import typing
 
 
 def second_index(text: str, symbol: str) -> typing.Union[int, None]:
-    # TODO Fix docstring and annotations
     """
     Returns the second index of a symbol in a given text
     :param text: a string to process

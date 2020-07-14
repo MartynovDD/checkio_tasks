@@ -38,7 +38,4 @@ if __name__ == "__main__":
     assert days_between((2020, 5), (2020, 6)) == 31, "Case 7"
     assert days_between((1991, 1, 1, 0, 0), (1992, 1, 1, 0, 0)) == 365, "Case 8"
 
-# TODO : implement border case and incorrect case
-# TODO : use unittest
-# TODO: add the ability to use tuple with len=1 and len=2
-# TODO: use more informative variable names
+

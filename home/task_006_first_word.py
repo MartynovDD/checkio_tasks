@@ -32,5 +32,4 @@ if __name__ == "__main__":
     assert first_word("") == "invalid value", "Case 7"
     assert first_word(1) == "invalid value", "Case 8"
 
-# TODO : implement border case and incorrect case
-# TODO : use unittest
+

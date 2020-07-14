@@ -9,7 +9,6 @@ def test_words_list():
 
 # @pytest.mark.skip
 def test_numbers_list():
-    # TODO Investigate
     assert frequency_sort([4, 6, 2, 2, 6, 4, 4, 4]) == [4, 4, 4, 4, 6, 6, 2, 2], "Numbers list"
 
 

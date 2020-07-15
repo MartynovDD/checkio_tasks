@@ -1,5 +1,7 @@
 import pytest
-from home.task_018_sun_angle import sun_angle
+from home.task_018_sun_angle import sun_angle, check_time_values
+from hypothesis import given, assume
+import hypothesis.strategies as st
 
 
 def test_seven_am():
@@ -29,6 +31,24 @@ def test_twelve_fifteen_am():
 def test_empty_string():
     with pytest.raises(ValueError):
         sun_angle("")
+
+
+@given(h=st.integers(min_value=0, max_value=24), m=st.integers(min_value=0, max_value=60))
+def test_positive_time_values(h, m):
+    assert check_time_values(h, m) == "ok!"
+
+
+@given(h=st.floats(min_value=-999, max_value=999), m=st.floats(min_value=-999, max_value=999))
+def test_negative_time_values(h, m):
+    assume(not 0 <= h <= 24)
+    assume(not 0 <= m <= 60)
+    with pytest.raises(ValueError):
+        check_time_values(h, m)
+
+
+def test_incorrect_time_format():
+    with pytest.raises(ValueError):
+        sun_angle("0_6:00")
 
 
 def test_no_args():

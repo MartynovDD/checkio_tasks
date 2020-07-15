@@ -1,35 +1,35 @@
 import pytest
-from utils.type_checker import type_checker
+from utils.check_type import check_type
 
 
 def test_integer_and_string():
     with pytest.raises(TypeError):
-        type_checker(int, "d")
+        check_type(int, "d")
 
 
 def test_integer_and_float():
     with pytest.raises(TypeError):
-        type_checker(int, 3.2)
+        check_type(int, 3.2)
 
 
 def test_list_and_dict():
     with pytest.raises(TypeError):
-        type_checker(list, {"key": "value"})
+        check_type(list, {"key": "value"})
 
 
 def test_two_ints():
-    assert type_checker(int, 1) is None
+    assert check_type(int, 1) is None
 
 
 def test_int_and_rounded_float():
-    assert type_checker(int, round(1.3)) is None
+    assert check_type(int, round(1.3)) is None
 
 
 def test_one_argument():
     with pytest.raises(TypeError):
-        type_checker(1)
+        check_type(1)
 
 
 def test_no_arguments():
     with pytest.raises(TypeError):
-        type_checker()
+        check_type()

@@ -2,8 +2,8 @@ import pytest
 from home.task_022_morse_decoder import morse_decoder
 
 
-def test_hello_world():
-    assert morse_decoder(".... . .-.. .-.. ---   .-- --- .-. .-.. -..") == "Hello world", "Two words"
+def test_hello_world(s):
+    assert morse_decoder(s) == "Hello world", "Two words"
 
 
 def test_numbers():
@@ -17,6 +17,10 @@ def test_words_and_numbers():
 
 def test_empty_string():
     assert morse_decoder("") == "", "Empty string"
+
+
+def test_unknown_symbols():
+    assert morse_decoder("()") == "", "Unknown symbols"
 
 
 def test_no_arguments():

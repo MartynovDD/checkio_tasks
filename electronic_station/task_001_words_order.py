@@ -11,13 +11,20 @@ Cases you should expect while solving this challenge:
     the text includes only English letters and spaces.
 https://py.checkio.org/ru/mission/words-order/
 """
+from utils.check_type import check_type
 
 
 def words_order(text: str, words: list) -> bool:
     """
-
-    :param text:
-    :param words:
-    :return:
+    Checks if words in list appear in same order as in text
+    :param text: str text to analyze
+    :param words: list of words to search in text
+    :return: True if order same or len(words) == 1, False otherwise
     """
-    pass
+    check_type(str, text)
+    check_type(list, words)
+
+    if not text or not len(words):
+        return False
+
+    return list(dict.fromkeys([word for word in text.split() if word in words])) == words

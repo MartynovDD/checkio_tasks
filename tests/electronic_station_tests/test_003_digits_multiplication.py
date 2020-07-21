@@ -1,5 +1,6 @@
 import pytest
 from electronic_station.task_003_digits_multiplication import multiply_digits
+from hypothesis import given, Verbosity, settings, strategies as st
 
 
 def test_one_two_three():
@@ -40,3 +41,9 @@ def test_no_args():
 def test_incorrect_args():
     with pytest.raises(TypeError):
         multiply_digits("beep")
+
+
+@given(num=st.integers(min_value=1, max_value=1000000))
+@settings(max_examples=1000, verbosity=Verbosity.verbose)
+def test_research(num):
+    print("Result: " + str(multiply_digits(num)))

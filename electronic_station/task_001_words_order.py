@@ -24,7 +24,10 @@ def words_order(text: str, words: list) -> bool:
     check_type(str, text)
     check_type(list, words)
 
-    if not text or not len(words):
+    if not text or not words:
         return False
 
-    return list(dict.fromkeys([word for word in text.split() if word in words])) == words
+    words_from_text = [word for word in text.split() if word in words]
+    unique_words_from_text = list(dict.fromkeys(words_from_text))
+    result = unique_words_from_text == words
+    return result

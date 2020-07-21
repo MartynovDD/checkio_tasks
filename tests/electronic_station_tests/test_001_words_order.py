@@ -1,13 +1,20 @@
 import pytest
 from electronic_station.task_001_words_order import words_order
+from hypothesis import given, assume, settings, Verbosity, strategies as st
 
 
-def test_hello_world():
-    assert words_order("hello spam world eggs", ["hello", "world"]), "Hello world"
+@given(s1=st.text(alphabet=st.characters(blacklist_categories=("Cs", "Cc", "Zs")), min_size=1),
+       s2=st.text(alphabet=st.characters(blacklist_categories=("Cs", "Cc", "Zs")), min_size=1))
+@settings(max_examples=1000, verbosity=Verbosity.verbose)
+def test_hello_world(s1, s2):
+    assume(s1 != s2)
+    assert words_order("{0} spam {1} eggs".format(s1, s2), [s1, s2]), "Hello world"
 
 
-def test_hello_world_reversed():
-    assert not words_order("hello spam world eggs", ["world", "hello"]), "Reversed words"
+@given(s1=st.text(), s2=st.text())
+@settings(max_examples=1000, verbosity=Verbosity.verbose)
+def test_hello_world_reversed(s1, s2):
+    assert not words_order("{0} spam {1} eggs".format(s1, s2), [s2, s1]), "Reversed words"
 
 
 def test_one_word():

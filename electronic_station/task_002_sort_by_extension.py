@@ -15,7 +15,6 @@ https://py.checkio.org/ru/mission/sort-by-extension/
 """
 from utils.check_type import check_type
 from typing import List
-import os.path
 
 
 def sort_by_extension(files: List[str]) -> List[str]:
@@ -39,7 +38,7 @@ def validate_files_list(files: list) -> str:
     :param files: A list of files to validate
     :return: "Ok!" if list is correct, otherwise raises TypeError
     """
-    if not len(files):
+    if not files:
         raise TypeError("List is empty")
     for item in files:
         check_type(str, item)

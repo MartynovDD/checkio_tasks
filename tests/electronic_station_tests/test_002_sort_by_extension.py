@@ -28,9 +28,8 @@ def test_complex_extensions(extension1, extension2, extension3):
 @given(extension=st.text(alphabet=st.characters(blacklist_categories=("Zs", "P")), min_size=1))
 @settings(verbosity=Verbosity.verbose)
 def test_file_with_no_extension(extension):
-    # TODO: Investigate
     files_list = ["eggs", "foo.", "bar." + extension, ".spam"]
-    expected_result = ["eggs", "foo.", ".spam", "bar." + extension]
+    expected_result = [".spam", "eggs", "foo.", "bar." + extension]
     assert sort_by_extension(files_list) == expected_result, "Files without extension"
 
 

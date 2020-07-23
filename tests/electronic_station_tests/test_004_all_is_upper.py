@@ -30,6 +30,14 @@ def test_mixed_cases(first_group, second_group, third_group):
     assert not is_all_upper(text), "Mixed cases"
 
 
+@given(first_group=st.text(alphabet=st.characters(whitelist_categories=("Lu",)), min_size=1),
+       second_group=st.text(alphabet=st.characters(whitelist_categories=("Nd",)), min_size=1))
+@settings(verbosity=Verbosity.verbose)
+def test_uppercase_and_digits(first_group, second_group):
+    text = first_group + second_group
+    assert is_all_upper(text), "Uppercase characters and digits"
+
+
 def test_empty_string():
     assert not is_all_upper(""), "Empty string"
 

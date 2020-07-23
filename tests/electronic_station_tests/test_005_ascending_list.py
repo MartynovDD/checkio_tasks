@@ -28,5 +28,5 @@ def test_no_args():
 
 
 def test_incorrect_args():
-    with pytest.raises(AssertionError):
+    with pytest.raises(TypeError):
         is_ascending(3)

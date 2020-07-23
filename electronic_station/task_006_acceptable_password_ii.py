@@ -20,3 +20,5 @@ def is_acceptable_password(password: str) -> bool:
     :param password:
     :return:
     """
+    check_type(str, password)
+    pass

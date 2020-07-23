@@ -28,7 +28,7 @@ def sort_by_extension(files: List[str]) -> List[str]:
     filenames_with_extensions = get_filenames_with_extensions(files)
     filenames_without_extensions = get_filenames_without_extensions(files)
 
-    sorted_filenames_with_extensions = sort_filenames_with_extension(filenames_with_extensions)
+    sorted_filenames_with_extensions = sort_filenames_with_extensions(filenames_with_extensions)
     sorted_filenames_without_extensions = sort_filenames_without_extensions(filenames_without_extensions)
 
     resulted_list = sorted_filenames_without_extensions + sorted_filenames_with_extensions
@@ -80,13 +80,13 @@ def get_filenames_without_extensions(files: list) -> list:
     return filenames_without_extensions
 
 
-def sort_filenames_with_extension(filenames_with_extension: list) -> list:
+def sort_filenames_with_extensions(filenames_with_extensions: list) -> list:
     """
     Sorts list of filenames with extensions
-    :param filenames_with_extension: A list of filenames with extensions
+    :param filenames_with_extensions: A list of filenames with extensions
     :return: Sorted list of filenames with extensions
     """
-    return sorted(filenames_with_extension, key=lambda file: file.split(".")[-1])
+    return sorted(filenames_with_extensions, key=lambda file: file.split(".")[-1])
 
 
 def sort_filenames_without_extensions(filenames_without_extensions: list):

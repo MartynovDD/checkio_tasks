@@ -7,7 +7,6 @@ Output: Bool.
 https://py.checkio.org/ru/mission/ascending-list/
 """
 from typing import Iterable
-from utils.check_type import check_type
 
 
 def is_ascending(items: Iterable[int]) -> bool:

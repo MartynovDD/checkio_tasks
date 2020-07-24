@@ -16,9 +16,21 @@ from utils.check_type import check_type
 
 def is_acceptable_password(password: str) -> bool:
     """
-
-    :param password:
-    :return:
+    Сhecks if given password length is >6 and it contains at least one digit
+    :param password: Password string to analyze
+    :return: True if password is acceptable, False otherwise
     """
     check_type(str, password)
-    pass
+
+    length_is_acceptable = False
+    has_digit = False
+
+    if len(password) > 6:
+        length_is_acceptable = True
+
+    for character in password:
+        if character.isdigit():
+            has_digit = True
+
+    return length_is_acceptable and has_digit
+

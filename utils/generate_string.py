@@ -15,4 +15,4 @@ def generate_string_from_groups(*groups: Union[int, str, float, bool], length=1)
 
 
 if __name__ == "__main__":
-    print(generate_string_from_groups("abcdef", "12345", length=6))
+    print(generate_string_from_groups("abcdef", 12345, length=6))

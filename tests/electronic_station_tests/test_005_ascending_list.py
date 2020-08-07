@@ -30,3 +30,7 @@ def test_no_args():
 def test_incorrect_args():
     with pytest.raises(TypeError):
         is_ascending(3)
+
+
+def test_iter():
+    assert is_ascending(iter([1, 2]))

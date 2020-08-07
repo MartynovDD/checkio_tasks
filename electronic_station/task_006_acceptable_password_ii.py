@@ -12,6 +12,7 @@ Output: A bool.
 https://py.checkio.org/ru/mission/acceptable-password-ii/
 """
 from utils.check_type import check_type
+import string
 
 
 def is_acceptable_password(password: str) -> bool:
@@ -34,3 +35,20 @@ def is_acceptable_password(password: str) -> bool:
 
     return length_is_acceptable and has_digit
 
+
+# def is_acceptable_password_two(password:str) -> bool:
+def is_acceptable_password(password: str) -> bool:
+    """
+    Сhecks if given password length is >6 and it contains at least one digit
+    :param password: Password string to analyze
+    :return: True if password is acceptable, False otherwise
+    """
+    check_type(str, password)
+
+    if len(password) <= 6:
+        return False
+
+    if not set(string.digits) & set(password):
+        return False
+
+    return True

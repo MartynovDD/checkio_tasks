@@ -13,10 +13,28 @@ from utils.check_type import check_type
 from typing import List
 
 
-def is_family(people: List[list]) -> bool:
+def is_family(people: List[List[str]]) -> bool:
     """
     Checks if given people are members of same family
-    :param people: A list of people to analyze. Each man is represented by nested list of lists
+    :param people: A list of people to analyze. Each person is represented by nested list of lists
     :return:
     """
     pass
+
+
+def validate_people(people: List[List[str]]):
+    """
+    Validates type of given list of people
+    :param people: List of lists of strings, representing fathers and sons
+    :return: None if list is valid, raises TypeError otherwise
+    """
+    check_type(list, people)
+    for pair in people:
+        check_type(list, pair)
+        for name in pair:
+            check_type(str, name)
+
+
+if __name__ == "__main__":
+    validate_people([["Logan", "Mike"], ["Logan", "Alex"]])
+    validate_people([[1, 2], [3.4, 4.5]])

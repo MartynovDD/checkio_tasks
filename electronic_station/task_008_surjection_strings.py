@@ -21,7 +21,7 @@ def are_isometric(first_string: str, second_string: str) -> bool:
     Checks whether two given strings are isometric
     :param first_string: First string to compare
     :param second_string: Second string to compare
-    :return: True if strings are isometric, False if strings are not isometric or have different lentgth
+    :return: True if strings are isometric, False if strings are not isometric or have different length
     """
     check_type(str, first_string)
     check_type(str, second_string)
@@ -29,5 +29,5 @@ def are_isometric(first_string: str, second_string: str) -> bool:
     if len(first_string) != len(second_string):
         return False
 
-    letters = [i for i, _ in set(zip(first_string, second_string))]
+    letters = [letter for letter, _ in set(zip(first_string, second_string))]
     return len(letters) == len(set(letters))

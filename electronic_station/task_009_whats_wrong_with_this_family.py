@@ -13,28 +13,61 @@ from utils.check_type import check_type
 from typing import List
 
 
-def is_family(people: List[List[str]]) -> bool:
+def is_family(tree: List[List[str]]) -> bool:
     """
-    Checks if given people are members of same family
-    :param people: A list of people to analyze. Each person is represented by nested list of lists
+    Checks if given tree are members of same family
+    :param tree: A list of tree to analyze. Each person is represented by nested list of lists
     :return:
     """
-    pass
+    validate_tree(tree)
+    if family_has_equal_names(tree):
+        return False
+
+    family = set(tree[0])
+    for father, son in tree[1:]:
+        if father in family and son not in family:
+            family.add(son)
+        else:
+            return False
+    return True
 
 
-def validate_people(people: List[List[str]]):
+def validate_tree(tree: List[List[str]]) -> None:
     """
-    Validates type of given list of people
-    :param people: List of lists of strings, representing fathers and sons
+    Validates type of given list of tree
+    :param tree: List of lists of strings, representing fathers and sons
     :return: None if list is valid, raises TypeError otherwise
     """
-    check_type(list, people)
-    for pair in people:
+    check_contents_of_tree(tree)
+    check_type(list, tree)
+    for pair in tree:
         check_type(list, pair)
         for name in pair:
             check_type(str, name)
 
 
-if __name__ == "__main__":
-    validate_people([["Logan", "Mike"], ["Logan", "Alex"]])
-    validate_people([[1, 2], [3.4, 4.5]])
+def check_contents_of_tree(tree: List[List[str]]) -> None:
+    """
+    Checks that given family tree is not empty or doesn't contain empty sublists
+    :param tree: List of lists of strings, representing fathers and sons
+    :return: None if list is valid, raises ValueError otherwise
+    """
+    if not tree:
+        raise ValueError("Given family tree is empty")
+
+    for pair in tree:
+        if not pair:
+            raise ValueError("Given tree contains empty family")
+
+
+def family_has_equal_names(tree: List[List[str]]) -> bool:
+    """
+    Checks if family in tree has equal names of father and son
+    :param tree: List of lists of strings, representing fathers and sons
+    :return:
+    """
+    for father, son in tree:
+        if father == son:
+            return True
+
+    return False
